@@ -2,7 +2,7 @@
 // Created          : 04-01-2020
 //
 // Last Modified By : the_hunter
-// Last Modified On : 04-01-2020
+// Last Modified On : 05-25-2020
 // ***********************************************************************
 //     Copyright (c) 1996-2002, Valve LLC. All rights reserved.
 // ***********************************************************************
@@ -1319,3 +1319,15 @@ struct DllNewFuncPointers {
 	/// </summary>
 	void (*cvar_value2)(const Edict* client, int request_id, const char* cvar_name, const char* value){};
 };
+
+#ifdef CSSDK_STANDALONE
+/// <summary>
+/// <para>Dummy (just for compile without dependencies).</para>
+/// </summary>
+inline EngineFuncPointers g_engine_funcs;
+#else
+/// <summary>
+/// <para>Must be provided by user of this code (usually in Metamod SDK).</para>
+/// </summary>
+extern EngineFuncPointers g_engine_funcs;
+#endif
