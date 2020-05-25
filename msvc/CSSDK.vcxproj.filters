@@ -242,5 +242,8 @@
     <ClCompile Include="..\cssdk\src\interface.cpp">
       <Filter>cssdk\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\cssdk\src\cssdk_utils.cpp">
+      <Filter>cssdk\src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
