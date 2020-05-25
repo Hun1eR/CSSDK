@@ -77,6 +77,7 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     REHLDS_FIXES
     REGAMEDLL_FIXES
     REGAMEDLL_API
+    CSSDK_STANDALONE
 )
 
 
