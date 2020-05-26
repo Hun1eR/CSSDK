@@ -2,14 +2,13 @@
 // Created          : 05-25-2020
 //
 // Last Modified By : the_hunter
-// Last Modified On : 05-25-2020
+// Last Modified On : 05-26-2020
 // ***********************************************************************
 //     Copyright (c) 1996-2002, Valve LLC. All rights reserved.
 // ***********************************************************************
 
 #include <cssdk/public/utils.h>
 #include <cssdk/dll/entity_base.h>
-#include <cssdk/engine/eiface.h>
 #include <climits>
 #include <cstdio>
 #include <cstring>
