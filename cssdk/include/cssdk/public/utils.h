@@ -45,6 +45,24 @@ inline const char* cssdk_entity_key_value(const int entity, const char* key)
 
 /// <summary>
 /// </summary>
+inline void cssdk_entity_set_key_value(Edict* const entity, const char* key, const char* value)
+{
+	const auto index = g_engine_funcs.index_of_edict(entity);
+	auto* buffer = g_engine_funcs.get_info_key_buffer(entity);
+	g_engine_funcs.set_client_key_value(index, buffer, key, value);
+}
+
+/// <summary>
+/// </summary>
+inline void cssdk_entity_set_key_value(const int entity, const char* key, const char* value)
+{
+	auto* edict = g_engine_funcs.entity_of_ent_index(entity);
+	auto* buffer = g_engine_funcs.get_info_key_buffer(edict);
+	g_engine_funcs.set_client_key_value(entity, buffer, key, value);
+}
+
+/// <summary>
+/// </summary>
 short cssdk_fixed_signed16(float value, float scale);
 
 /// <summary>
