@@ -237,6 +237,9 @@
     <ClInclude Include="..\cssdk\include\cssdk\public\vector.h">
       <Filter>cssdk\include\public</Filter>
     </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\dll\gib.h">
+      <Filter>cssdk\include\dll</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cssdk\src\interface.cpp">

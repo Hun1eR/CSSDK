@@ -155,6 +155,7 @@
     <ClInclude Include="..\cssdk\include\cssdk\dll\entity_base.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\ext_defs.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\game_rules.h" />
+    <ClInclude Include="..\cssdk\include\cssdk\dll\gib.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\hint_message.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\items.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\monsters.h" />

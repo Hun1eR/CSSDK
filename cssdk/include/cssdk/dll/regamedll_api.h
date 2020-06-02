@@ -11,6 +11,7 @@
 
 #include <cssdk/common/hook_chains.h>
 #include <cssdk/dll/game_rules.h>
+#include <cssdk/dll/gib.h>
 
 /// <summary>
 /// </summary>
@@ -18,7 +19,7 @@ constexpr auto REGAMEDLL_API_VERSION_MAJOR = 5;
 
 /// <summary>
 /// </summary>
-constexpr auto REGAMEDLL_API_VERSION_MINOR = 16;
+constexpr auto REGAMEDLL_API_VERSION_MINOR = 17;
 
 /// <summary>
 /// </summary>
@@ -451,6 +452,26 @@ using ReHookRegistryPlayerDropIdlePlayer = HookChainClassRegistry<void, PlayerBa
 // CreateWeaponBox hook
 using ReHookCreateWeaponBox = HookChain<WeaponBox*, PlayerItemBase*, PlayerBase*, const char*, Vector&, Vector&, Vector&, float, bool>;
 using ReHookRegistryCreateWeaponBox = HookChainRegistry<WeaponBox*, PlayerItemBase*, PlayerBase*, const char*, Vector&, Vector&, Vector&, float, bool>;
+
+// SpawnHeadGib hook
+using ReHookSpawnHeadGib = HookChain<Gib, EntityVars*>;
+using ReHookRegistrySpawnHeadGib = HookChainRegistry<Gib, EntityVars*>;
+
+// SpawnRandomGibs hook
+using ReHookSpawnRandomGibs = HookChain<void, EntityVars*, int, int>;
+using ReHookRegistrySpawnRandomGibs = HookChainRegistry<void, EntityVars*, int, int>;
+
+// Gib::Spawn hook
+using ReHookGibSpawn = HookChainClass<void, Gib, const char*>;
+using ReHookRegistryGibSpawn = HookChainClassRegistry<void, Gib, const char*>;
+
+// Gib::BounceGibTouch hook
+using ReHookGibBounceGibTouch = HookChainClass<void, Gib, EntityBase*>;
+using ReHookRegistryGibBounceGibTouch = HookChainClassRegistry<void, Gib, EntityBase*>;
+
+// Gib::WaitTillLand hook
+using ReHookGibWaitTillLand = HookChainClass<void, Gib>;
+using ReHookRegistryGibWaitTillLand = HookChainClassRegistry<void, Gib>;
 
 /// <summary>
 /// Class RegamedllHookChains.
@@ -888,6 +909,26 @@ public:
 	/// <summary>
 	/// </summary>
 	virtual ReHookRegistryCreateWeaponBox* create_weapon_box() = 0;
+
+	/// <summary>
+	/// </summary>
+	virtual ReHookRegistrySpawnHeadGib* spawn_head_gib() = 0;
+
+	/// <summary>
+	/// </summary>
+	virtual ReHookRegistrySpawnRandomGibs* spawn_random_gibs() = 0;
+	
+	/// <summary>
+	/// </summary>
+	virtual ReHookRegistryGibSpawn* gib_spawn() = 0;
+
+	/// <summary>
+	/// </summary>
+	virtual ReHookRegistryGibBounceGibTouch* gib_bounce_gib_touch() = 0;
+
+	/// <summary>
+	/// </summary>
+	virtual ReHookRegistryGibWaitTillLand* gib_wait_till_land() = 0;
 };
 
 /// <summary>
