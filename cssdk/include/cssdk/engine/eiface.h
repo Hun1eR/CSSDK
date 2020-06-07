@@ -565,7 +565,7 @@ struct EngineFuncPointers {
 	/// <summary>
 	/// <para>Gets the string assigned to the index.</para>
 	/// </summary>
-	const char* (*sz_from_index)(Strind string){};
+	const char* (*sz_from_index)(unsigned int string){};
 
 	/// <summary>
 	/// <para>Allocates a string in the string pool.</para>
