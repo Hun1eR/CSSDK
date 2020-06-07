@@ -570,7 +570,7 @@ struct EngineFuncPointers {
 	/// <summary>
 	/// <para>Allocates a string in the string pool.</para>
 	/// </summary>
-	Strind (*alloc_string)(const char* value){};
+	unsigned int (*alloc_string)(const char* value){};
 
 	/// <summary>
 	/// <para>Gets the <c>EntityVars</c> instance assigned to the given entity instance.</para>
