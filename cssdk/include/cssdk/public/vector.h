@@ -344,6 +344,78 @@ public:
 
 	/// <summary>
 	/// </summary>
+	Vector operator+(const Vector& rhs) const
+	{
+		return Vector(x + rhs.x, y + rhs.y, z + rhs.z);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector operator-(const Vector& rhs) const
+	{
+		return Vector(x - rhs.x, y - rhs.y, z - rhs.z);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector operator*(const Vector& rhs) const
+	{
+		return Vector(x * rhs.x, y * rhs.y, z * rhs.z);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector operator/(const Vector& rhs) const
+	{
+		return Vector(x / rhs.x, y / rhs.y, z / rhs.z);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector& operator+=(const vec_t rhs)
+	{
+		x += rhs;
+		y += rhs;
+		z += rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector& operator-=(const vec_t rhs)
+	{
+		x -= rhs;
+		y -= rhs;
+		z -= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector& operator*=(const vec_t rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector& operator/=(const vec_t rhs)
+	{
+		x /= rhs;
+		y /= rhs;
+		z /= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
 	Vector& operator+=(const Vector& rhs)
 	{
 		x += rhs.x;
