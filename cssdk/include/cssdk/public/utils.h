@@ -63,6 +63,22 @@ inline void cssdk_entity_set_key_value(const int entity, const char* key, const 
 
 /// <summary>
 /// </summary>
+inline Vector cssdk_get_gun_position(const EntityVars& entity_vars)
+{
+	return entity_vars.origin + entity_vars.view_ofs;
+}
+
+/// <summary>
+/// </summary>
+inline void cssdk_get_gun_position(const EntityVars& entity_vars, Vector& position)
+{
+	position.x = entity_vars.origin.x + entity_vars.view_ofs.x;
+	position.y = entity_vars.origin.y + entity_vars.view_ofs.y;
+	position.z = entity_vars.origin.z + entity_vars.view_ofs.z;
+}
+
+/// <summary>
+/// </summary>
 short cssdk_fixed_signed16(float value, float scale);
 
 /// <summary>
