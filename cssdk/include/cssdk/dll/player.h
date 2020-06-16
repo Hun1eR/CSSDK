@@ -1069,8 +1069,9 @@ public:
 		auto item = player_items[static_cast<int>(slot)];
 
 		while (item) {
-			if (func(static_cast<T*>(item)))
+			if (func(static_cast<T*>(item))) {
 				return static_cast<T*>(item);
+			}
 
 			item = item->next;
 		}
@@ -1085,8 +1086,9 @@ public:
 	{
 		for (auto item : player_items) {
 			while (item) {
-				if (func(static_cast<T*>(item)))
+				if (func(static_cast<T*>(item))) {
 					return static_cast<T*>(item);
+				}
 
 				item = item->next;
 			}
@@ -1100,13 +1102,15 @@ public:
 	template <typename T = PlayerItemBase, typename Functor>
 	T* for_each_item(const char* item_name, const Functor& func) const
 	{
-		if (!item_name)
+		if (!item_name) {
 			return nullptr;
+		}
 
 		for (auto item : player_items) {
 			while (item) {
-				if (item->vars->class_name == item_name && func(static_cast<T*>(item)))
+				if (item->vars->class_name == item_name && func(static_cast<T*>(item))) {
 					return static_cast<T*>(item);
+				}
 
 				item = item->next;
 			}

@@ -917,7 +917,7 @@ public:
 	/// <summary>
 	/// </summary>
 	virtual ReHookRegistrySpawnRandomGibs* spawn_random_gibs() = 0;
-	
+
 	/// <summary>
 	/// </summary>
 	virtual ReHookRegistryGibSpawn* gib_spawn() = 0;

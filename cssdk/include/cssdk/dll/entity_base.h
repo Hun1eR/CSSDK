@@ -585,16 +585,18 @@ public:
 	/// </summary>
 	explicit EntityHandle(const Edict* entity) : EntityHandle()
 	{
-		if (entity)
+		if (entity) {
 			set(const_cast<Edict*>(entity));
+		}
 	}
 
 	/// <summary>
 	/// </summary>
 	explicit EntityHandle(const T* entity) : EntityHandle()
 	{
-		if (entity && entity->vars && entity->vars->containing_entity)
+		if (entity && entity->vars && entity->vars->containing_entity) {
 			set(entity->vars->containing_entity);
+		}
 	}
 
 	/// <summary>
@@ -645,7 +647,7 @@ public:
 
 	/// <summary>
 	/// </summary>
-	EntityHandle& operator=(EntityHandle&&) = default;
+	EntityHandle& operator=(EntityHandle&&) noexcept = default;
 
 	/// <summary>
 	/// </summary>

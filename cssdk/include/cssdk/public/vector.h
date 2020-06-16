@@ -218,8 +218,9 @@ public:
 	{
 		auto len = length();
 
-		if (!len)
+		if (!len) {
 			return Vector2D(0.0f, 0.0f);
+		}
 
 		len = 1.0f / len;
 
@@ -505,8 +506,9 @@ public:
 	{
 		auto len = length();
 
-		if (!len)
+		if (!len) {
 			return Vector(0.0f, 0.0f, 1.0f);
+		}
 
 		len = 1.0f / len;
 
