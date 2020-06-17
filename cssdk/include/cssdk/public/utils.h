@@ -10,8 +10,23 @@
 #pragma once
 
 #include <cssdk/engine/eiface.h>
+#include <cssdk/engine/global_vars.h>
 
 class EntityBase;
+
+/// <summary>
+/// </summary>
+inline bool cssdk_is_client(const int index)
+{
+	return index > 0 && index <= g_global_vars->max_clients;
+}
+
+/// <summary>
+/// </summary>
+inline bool cssdk_is_client(Edict* entity)
+{
+	return cssdk_is_client(g_engine_funcs.index_of_edict(entity));
+}
 
 /// <summary>
 /// </summary>
