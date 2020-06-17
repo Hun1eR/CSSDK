@@ -50,6 +50,19 @@ inline void message_end()
 
 /// <summary>
 /// </summary>
+bool cssdk_is_bot(Edict* client)
+{
+	if (client->vars.flags & FL_FAKE_CLIENT) {
+		return true;
+	}
+
+	const auto* auth_id = g_engine_funcs.get_player_auth_id(client);
+
+	return !auth_id || !std::strcmp(auth_id, "BOT");
+}
+
+/// <summary>
+/// </summary>
 short cssdk_fixed_signed16(const float value, const float scale)
 {
 	auto output = static_cast<int>(value * scale);

@@ -94,6 +94,10 @@ inline void cssdk_get_gun_position(const EntityVars& entity_vars, Vector& positi
 
 /// <summary>
 /// </summary>
+bool cssdk_is_bot(Edict* client);
+
+/// <summary>
+/// </summary>
 short cssdk_fixed_signed16(float value, float scale);
 
 /// <summary>
