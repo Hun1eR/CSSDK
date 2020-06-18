@@ -245,7 +245,7 @@ public:
 
 	/// <summary>
 	/// </summary>
-	Vector old_viewing_angle;
+	Vector old_viewing_angle{};
 
 	/// <summary>
 	/// </summary>

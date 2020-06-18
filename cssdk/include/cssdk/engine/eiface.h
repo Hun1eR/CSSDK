@@ -175,7 +175,7 @@ struct TraceResult {
 	/// <summary>
 	/// <para>Final position.</para>
 	/// </summary>
-	Vector end_position;
+	Vector end_position{};
 
 	/// <summary>
 	/// <para>Distance from origin that the plane is positioned at.<br/>
@@ -186,7 +186,7 @@ struct TraceResult {
 	/// <summary>
 	/// <para>Surface normal at impact.</para>
 	/// </summary>
-	Vector plane_normal;
+	Vector plane_normal{};
 
 	/// <summary>
 	/// <para>Entity the surface is on.</para>

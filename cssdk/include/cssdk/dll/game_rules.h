@@ -931,18 +931,18 @@ public:
 	/// <summary>
 	/// <para>TRUE at beginning of round, set to FALSE when the period expires.</para>
 	/// </summary>
-	qboolean freeze_period;
+	qboolean freeze_period{};
 
 	/// <summary>
 	/// </summary>
-	qboolean bomb_dropped;
+	qboolean bomb_dropped{};
 
 	/// <summary>
 	/// </summary>
-	char* game_desc;
+	char* game_desc{};
 
 	/// <summary>
 	/// <para>Intermission or finale.</para>
 	/// </summary>
-	bool is_game_over;
+	bool is_game_over{};
 };

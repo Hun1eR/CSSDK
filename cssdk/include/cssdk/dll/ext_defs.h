@@ -98,19 +98,19 @@ enum class UseType {
 struct LockSound {
 	/// <summary>
 	/// </summary>
-	Strind locked_sound;
+	Strind locked_sound{};
 
 	/// <summary>
 	/// </summary>
-	Strind locked_sentence;
+	Strind locked_sentence{};
 
 	/// <summary>
 	/// </summary>
-	Strind unlocked_sound;
+	Strind unlocked_sound{};
 
 	/// <summary>
 	/// </summary>
-	Strind unlocked_sentence;
+	Strind unlocked_sentence{};
 
 	/// <summary>
 	/// </summary>
