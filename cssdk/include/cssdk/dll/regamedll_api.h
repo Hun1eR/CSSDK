@@ -19,7 +19,7 @@ constexpr auto REGAMEDLL_API_VERSION_MAJOR = 5;
 
 /// <summary>
 /// </summary>
-constexpr auto REGAMEDLL_API_VERSION_MINOR = 17;
+constexpr auto REGAMEDLL_API_VERSION_MINOR = 18;
 
 /// <summary>
 /// </summary>

@@ -2463,6 +2463,26 @@ constexpr auto KNIFE_MAX_SPEED = 250.0f;
 constexpr auto KNIFE_MAX_SPEED_SHIELD = 180.0f;
 
 /// <summary>
+/// </summary>
+constexpr auto KNIFE_STAB_DAMAGE = 65.0f;
+
+/// <summary>
+/// </summary>
+constexpr auto KNIFE_SWING_DAMAGE = 15.0f;
+
+/// <summary>
+/// </summary>
+constexpr auto KNIFE_SWING_DAMAGE_FAST = 20.0f;
+
+/// <summary>
+/// </summary>
+constexpr auto KNIFE_STAB_DISTANCE = 32.0f;
+
+/// <summary>
+/// </summary>
+constexpr auto KNIFE_SWING_DISTANCE = 48.0f;
+
+/// <summary>
 /// Enum KnifeAnimSeq
 /// </summary>
 enum class KnifeAnimSeq {
@@ -2587,11 +2607,31 @@ public:
 
 	/// <summary>
 	/// </summary>
-	TraceResult trace_hit{};
+	//TraceResult trace_hit{};
 
 	/// <summary>
 	/// </summary>
-	unsigned short event_knife{};
+	//unsigned short event_knife{};
+
+	/// <summary>
+	/// </summary>
+	//float stab_base_damage{};
+
+	/// <summary>
+	/// </summary>
+	//float swing_base_damage{};
+
+	/// <summary>
+	/// </summary>
+	//float swing_base_damage_fast{};
+
+	/// <summary>
+	/// </summary>
+	//float stab_distance{};
+
+	/// <summary>
+	/// </summary>
+	//float swing_distance{};
 };
 
 //
