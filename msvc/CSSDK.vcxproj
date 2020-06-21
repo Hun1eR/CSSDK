@@ -205,7 +205,7 @@
     <ClInclude Include="..\cssdk\include\cssdk\public\vector.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\cssdk\src\cssdk_utils.cpp" />
+    <ClCompile Include="..\cssdk\src\utils.cpp" />
     <ClCompile Include="..\cssdk\src\interface.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
