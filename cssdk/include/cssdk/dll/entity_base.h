@@ -474,6 +474,17 @@ public:
 	/// </summary>
 	bool has_disconnected{};
 
+	/// <summary>
+	/// </summary>
+	static EntityBase* instance(const Edict* edict)
+	{
+		if (!edict) {
+			edict = g_engine_funcs.entity_of_ent_index(0);
+		}
+
+		return static_cast<EntityBase*>(edict->private_data);
+	}
+
 	using UseCallbackFn = decltype(use_callback);
 	using ThinkCallbackFn = decltype(think_callback);
 	using TouchCallbackFn = decltype(touch_callback);
@@ -543,21 +554,21 @@ public:
 	/// </summary>
 	[[nodiscard]] Edict* edict() const
 	{
-		return vars == nullptr ? nullptr : vars->containing_entity;
+		return vars->containing_entity;
 	}
 
 	/// <summary>
 	/// </summary>
 	[[nodiscard]] int edict_index() const
 	{
-		return vars == nullptr ? -1 : g_engine_funcs.index_of_edict(vars->containing_entity);
+		return g_engine_funcs.index_of_edict(vars->containing_entity);
 	}
 
 	/// <summary>
 	/// </summary>
 	[[nodiscard]] eoffset edict_offset() const
 	{
-		return vars == nullptr ? -1 : g_engine_funcs.ent_offset_of_entity(vars->containing_entity);
+		return g_engine_funcs.ent_offset_of_entity(vars->containing_entity);
 	}
 };
 
