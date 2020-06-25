@@ -28,16 +28,17 @@ SysInterfaceReg* SysInterfaceReg::interface_regs = nullptr;
 /// <summary>
 /// <para>Loads a DLL/component from disk and returns a handle to it.<br/></para>
 /// </summary>
-/// <param name="module_name">Filename of the component.<br/></param>
+/// <param name="module_name">Filename of the component.</param>
+/// <param name="load_flags">The action to be taken when loading the module.<br/></param>
 /// <returns>Opaque handle to the module (hides system dependency).</returns>
-SysModule* sys_load_module(const char* module_name)
+SysModule* sys_load_module(const char* module_name, [[maybe_unused]] const unsigned long load_flags = 0)
 {
 	if (module_name == nullptr) {
 		return nullptr;
 	}
 
 #if defined (_WIN32)
-	auto* const module_handle = LoadLibrary(module_name);
+	auto* const module_handle = LoadLibraryEx(module_name, nullptr, load_flags);
 #else
 	void* module_handle = nullptr;
 
