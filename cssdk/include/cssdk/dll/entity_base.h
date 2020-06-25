@@ -626,7 +626,7 @@ public:
 
 	/// <summary>
 	/// </summary>
-	EntityHandle(EntityHandle<T>&&) = delete;
+	EntityHandle(EntityHandle<T>&&) noexcept = default;
 
 	/// <summary>
 	/// </summary>
@@ -676,7 +676,7 @@ public:
 
 	/// <summary>
 	/// </summary>
-	EntityHandle& operator=(const EntityHandle<T>& other) = default;
+	EntityHandle& operator=(const EntityHandle<T>&) = default;
 
 	/// <summary>
 	/// </summary>
