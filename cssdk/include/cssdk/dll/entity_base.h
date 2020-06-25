@@ -666,7 +666,7 @@ public:
 	/// </summary>
 	[[nodiscard]] bool is_valid() const
 	{
-		const auto edict = get();
+		const auto* edict = get();
 		return cssdk_is_valid_entity(edict);
 	}
 
@@ -696,6 +696,14 @@ public:
 	bool operator!=(T* entity) const
 	{
 		return !(*this == entity);
+	}
+
+	/// <summary>
+	/// </summary>
+	T* operator->()
+	{
+		const auto* edict = get();
+		return cssdk_entity_private_data<T*>(edict);
 	}
 
 private:
