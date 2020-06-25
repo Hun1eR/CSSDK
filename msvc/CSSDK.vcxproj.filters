@@ -213,9 +213,6 @@
     <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_move_vars.h">
       <Filter>cssdk\include\pm_shared</Filter>
     </ClInclude>
-    <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_shared.h">
-      <Filter>cssdk\include\pm_shared</Filter>
-    </ClInclude>
     <ClInclude Include="..\cssdk\include\cssdk\public\arch_types.h">
       <Filter>cssdk\include\public</Filter>
     </ClInclude>

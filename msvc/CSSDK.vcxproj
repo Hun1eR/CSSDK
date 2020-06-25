@@ -195,7 +195,6 @@
     <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_info.h" />
     <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_materials.h" />
     <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_move_vars.h" />
-    <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_shared.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\arch_types.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\base_types.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\interface.h" />
