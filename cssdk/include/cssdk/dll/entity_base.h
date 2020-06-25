@@ -570,6 +570,13 @@ public:
 	{
 		return g_engine_funcs.ent_offset_of_entity(vars->containing_entity);
 	}
+
+	/// <summary>
+	/// </summary>
+	[[nodiscard]] bool is_dormant() const
+	{
+		return (vars->flags & FL_DORMANT) == FL_DORMANT;
+	}
 };
 
 /// <summary>
