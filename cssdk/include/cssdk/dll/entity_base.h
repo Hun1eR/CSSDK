@@ -573,6 +573,13 @@ public:
 
 	/// <summary>
 	/// </summary>
+	[[nodiscard]] bool is_proxy() const
+	{
+		return (vars->flags & FL_PROXY) == FL_PROXY;
+	}
+
+	/// <summary>
+	/// </summary>
 	[[nodiscard]] bool is_dormant() const
 	{
 		return (vars->flags & FL_DORMANT) == FL_DORMANT;
