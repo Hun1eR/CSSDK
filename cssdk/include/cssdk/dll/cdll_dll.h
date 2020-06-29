@@ -80,26 +80,6 @@ constexpr auto STATUS_ICON_FLASH = 2;
 
 /// <summary>
 /// </summary>
-constexpr auto HUD_PRINT_NOTIFY = 1;
-
-/// <summary>
-/// </summary>
-constexpr auto HUD_PRINT_CONSOLE = 2;
-
-/// <summary>
-/// </summary>
-constexpr auto HUD_PRINT_TALK = 3;
-
-/// <summary>
-/// </summary>
-constexpr auto HUD_PRINT_CENTER = 4;
-
-/// <summary>
-/// </summary>
-constexpr auto HUD_PRINT_RADIO = 5;
-
-/// <summary>
-/// </summary>
 constexpr auto STATUS_NIGHT_VISION_ON = 1;
 
 /// <summary>
@@ -214,6 +194,31 @@ constexpr auto WEAPON_SUIT = 31;
 /// <summary>
 /// </summary>
 constexpr auto WEAPON_ALL_WEAPONS = ~(1 << WEAPON_SUIT);
+
+/// <summary>
+/// Enum HudPrint
+/// </summary>
+enum class HudPrint {
+	/// <summary>
+	/// </summary>
+	Notify = 1,
+
+	/// <summary>
+	/// </summary>
+	Console,
+
+	/// <summary>
+	/// </summary>
+	Talk,
+
+	/// <summary>
+	/// </summary>
+	Center,
+
+	/// <summary>
+	/// </summary>
+	Radio
+};
 
 /// <summary>
 /// Enum VguiMenu
