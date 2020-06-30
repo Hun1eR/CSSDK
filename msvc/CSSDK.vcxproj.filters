@@ -30,6 +30,9 @@
     <Filter Include="cssdk\include\dll\api">
       <UniqueIdentifier>{2caafa89-938f-4789-a7de-138f1c1c3971}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cssdk\include\game_shared">
+      <UniqueIdentifier>{9114bed1-a9ac-47fa-8154-7399115de882}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\CMakeLists.txt" />
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="..\cssdk\include\cssdk\dll\gib.h">
       <Filter>cssdk\include\dll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\game_shared\voice_manager.h">
+      <Filter>cssdk\include\game_shared</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
