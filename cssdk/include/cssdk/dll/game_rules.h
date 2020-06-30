@@ -741,7 +741,7 @@ public:
 	// 
 
 	/// <summary>
-	/// <para>The player is touching an CBasePlayerItem, do I give it to him?</para>
+	/// <para>The player is touching an PlayerItemBase, do I give it to him?</para>
 	/// </summary>
 	virtual qboolean can_have_player_item(PlayerBase* player, PlayerItemBase* item) = 0;
 
@@ -965,4 +965,243 @@ public:
 	/// <para>Intermission or finale.</para>
 	/// </summary>
 	bool is_game_over{};
+};
+
+/// <summary>
+/// Class HalfLifeRules.
+/// </summary>
+class HalfLifeRules : public GameRules {
+public:
+	/// <summary>
+	/// </summary>
+	~HalfLifeRules() override = 0;
+
+	/// <summary>
+	/// </summary>
+	void think() override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean is_allowed_to_spawn(EntityBase* entity) override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean allow_flashlight() override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean should_switch_weapon(PlayerBase* player, PlayerItemBase* weapon) override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean get_next_best_weapon(PlayerBase* player, PlayerItemBase* current_weapon) override = 0;
+
+	//
+	// Functions to verify the single/multiplayer status of a game.
+	// 
+
+	/// <summary>
+	/// </summary>
+	qboolean is_multiplayer() override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean is_deathmatch() override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean is_coop() override = 0;
+
+	//
+	// Client connection/disconnection.
+	// 
+
+	/// <summary>
+	/// </summary>
+	qboolean client_connected(Edict* entity, const char* name, const char* address, char reject_reason[128]) override = 0;
+
+	/// <summary>
+	/// <para>The client dll is ready for updating.</para>
+	/// </summary>
+	void init_hud(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	void client_disconnected(Edict* client) override = 0;
+
+	//
+	// Client damage rules.
+	// 
+
+	/// <summary>
+	/// </summary>
+	float player_fall_damage(PlayerBase* player) override = 0;
+
+	//
+	// Client spawn/respawn control.
+	// 
+
+	/// <summary>
+	/// </summary>
+	void player_spawn(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	void player_think(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean player_can_respawn(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	float player_spawn_time(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	Edict* get_player_spawn_spot(PlayerBase* player) override = 0;
+
+	/// <summary>
+	/// </summary>
+	qboolean allow_auto_target_crosshair() override = 0;
+
+	//
+	// Client kills/scoring.
+	// 
+
+	/// <summary>
+	/// </summary>
+	int points_for_kill(PlayerBase* attacker, PlayerBase* killed) override = 0;
+
+	/// <summary>
+	/// </summary>
+	void player_killed(PlayerBase* victim, EntityVars* killer, EntityVars* inflictor) override = 0;
+
+	/// <summary>
+	/// </summary>
+	void death_notice(PlayerBase* victim, EntityVars* killer, EntityVars* inflictor) override = 0;
+
+	//
+	// Weapon retrieval.
+	// 
+
+	/// <summary>
+	/// </summary>
+	void player_got_weapon(PlayerBase* player, PlayerItemBase* weapon) override = 0;
+
+	//
+	// Weapon spawn/respawn control.
+	// 
+
+	/// <summary>
+	/// </summary>
+	WeaponRespawnCode weapon_should_respawn(PlayerItemBase* weapon) override = 0;
+
+	/// <summary>
+	/// </summary>
+	float weapon_respawn_time(PlayerItemBase* weapon) override = 0;
+
+	/// <summary>
+	/// </summary>
+	float weapon_try_respawn(PlayerItemBase* weapon) override = 0;
+
+	/// <summary>
+	/// </summary>
+	Vector weapon_respawn_spot(PlayerItemBase* weapon) override = 0;
+
+	//
+	// Item retrieval.
+	// 
+
+	/// <summary>
+	/// </summary>
+	qboolean can_have_item(PlayerBase* player, Item* item) override = 0;
+
+	/// <summary>
+	/// </summary>
+	void player_got_item(PlayerBase* player, Item* item) override = 0;
+
+	//
+	// Item spawn/respawn control.
+	// 
+
+	/// <summary>
+	/// </summary>
+	WeaponRespawnCode item_should_respawn(Item* item) override = 0;
+
+	/// <summary>
+	/// </summary>
+	float item_respawn_time(Item* item) override = 0;
+
+	/// <summary>
+	/// </summary>
+	Vector item_respawn_spot(Item* item) override = 0;
+
+	//
+	// Ammo retrieval.
+	// 
+
+	/// <summary>
+	/// </summary>
+	void player_got_ammo(PlayerBase* player, char* name, int count) override = 0;
+
+	//
+	// Ammo spawn/respawn control.
+	// 
+
+	/// <summary>
+	/// </summary>
+	WeaponRespawnCode ammo_should_respawn(PlayerAmmoBase* ammo) override = 0;
+
+	/// <summary>
+	/// </summary>
+	float ammo_respawn_time(PlayerAmmoBase* ammo) override = 0;
+
+	/// <summary>
+	/// </summary>
+	Vector ammo_respawn_spot(PlayerAmmoBase* ammo) override = 0;
+
+	//
+	// Health charger respawn control.
+	// 
+
+	/// <summary>
+	/// </summary>
+	float health_charger_recharge_time() override = 0;
+
+	//
+	// What happens to a dead player's weapons.
+	// 
+
+	/// <summary>
+	/// </summary>
+	WeaponRespawnCode dead_player_weapons(PlayerBase* player) override = 0;
+
+	//
+	// What happens to a dead player's ammo.
+	// 
+
+	/// <summary>
+	/// </summary>
+	WeaponRespawnCode dead_player_ammo(PlayerBase* player) override = 0;
+
+	//
+	// Teamplay stuff.
+	// 
+
+	/// <summary>
+	/// </summary>
+	const char* get_team_id(EntityBase* entity) override = 0;
+
+	/// <summary>
+	/// </summary>
+	PlayerRelationship player_relationship(PlayerBase* player, EntityBase* target) override = 0;
+
+	//
+	// Monsters.
+	// 
+
+	/// <summary>
+	/// </summary>
+	qboolean allow_monsters() override = 0;
 };
