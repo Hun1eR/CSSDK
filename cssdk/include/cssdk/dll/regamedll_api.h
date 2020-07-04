@@ -226,8 +226,8 @@ using ReHookHandleMenuChooseAppearance = IHookChain<void, PlayerBase*, int>;
 using ReHookRegistryHandleMenuChooseAppearance = IHookChainRegistry<void, PlayerBase*, int>;
 
 // HandleMenu_ChooseTeam hook
-using ReHookHandleMenuChooseTeam = IHookChain<qboolean, PlayerBase*, int>;
-using ReHookRegistryHandleMenuChooseTeam = IHookChainRegistry<qboolean, PlayerBase*, int>;
+using ReHookHandleMenuChooseTeam = IHookChain<qboolean, PlayerBase*, ChooseTeamMenuSlot>;
+using ReHookRegistryHandleMenuChooseTeam = IHookChainRegistry<qboolean, PlayerBase*, ChooseTeamMenuSlot>;
 
 // ShowMenu hook
 using ReHookShowMenu = IHookChain<void, PlayerBase*, int, int, qboolean, char*>;
