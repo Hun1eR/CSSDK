@@ -234,8 +234,8 @@ using ReHookShowMenu = IHookChain<void, PlayerBase*, int, int, qboolean, char*>;
 using ReHookRegistryShowMenu = IHookChainRegistry<void, PlayerBase*, int, int, qboolean, char*>;
 
 // ShowVGUIMenu hook
-using ReHookShowVguiMenu = IHookChain<void, PlayerBase*, int, int, char*>;
-using ReHookRegistryShowVguiMenu = IHookChainRegistry<void, PlayerBase*, int, int, char*>;
+using ReHookShowVguiMenu = IHookChain<void, PlayerBase*, VguiMenu, int, char*>;
+using ReHookRegistryShowVguiMenu = IHookChainRegistry<void, PlayerBase*, VguiMenu, int, char*>;
 
 // BuyGunAmmo hook
 using ReHookBuyGunAmmo = IHookChain<bool, PlayerBase*, PlayerItemBase*, bool>;
