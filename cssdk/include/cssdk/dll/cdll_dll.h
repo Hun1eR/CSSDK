@@ -305,3 +305,40 @@ enum class VguiMenuSlot {
 	/// </summary>
 	BuyItem
 };
+
+/// <summary>
+/// Enum BuyItemMenuSlot
+/// </summary>
+enum class BuyItemMenuSlot {
+	/// <summary>
+	/// </summary>
+	Vest = 1,
+
+	/// <summary>
+	/// </summary>
+	VestHelm,
+
+	/// <summary>
+	/// </summary>
+	FlashGrenade,
+
+	/// <summary>
+	/// </summary>
+	HeGrenade,
+
+	/// <summary>
+	/// </summary>
+	SmokeGrenade,
+
+	/// <summary>
+	/// </summary>
+	NightVision,
+
+	/// <summary>
+	/// </summary>
+	DefuseKit,
+
+	/// <summary>
+	/// </summary>
+	Shield
+};
