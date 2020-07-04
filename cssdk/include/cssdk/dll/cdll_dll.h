@@ -342,3 +342,32 @@ enum class BuyItemMenuSlot {
 	/// </summary>
 	Shield
 };
+
+/// <summary>
+/// Enum ChooseTeamMenuSlot
+/// </summary>
+enum class ChooseTeamMenuSlot {
+	/// <summary>
+	/// </summary>
+	Undefined = -1,
+
+	/// <summary>
+	/// </summary>
+	Terrorist = 1,
+
+	/// <summary>
+	/// </summary>
+	Ct,
+
+	/// <summary>
+	/// </summary>
+	Vip,
+
+	/// <summary>
+	/// </summary>
+	Random = 5,
+
+	/// <summary>
+	/// </summary>
+	Spectator
+};
