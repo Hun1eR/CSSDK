@@ -581,6 +581,14 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Negates a vector.<br/></para>
+	/// </summary>
+	[[nodiscard]] Vector negate() const
+	{
+		return Vector(-x, -y, -z);
+	}
+
+	/// <summary>
 	/// </summary>
 	void copy_to_array(vec_t vec_3d[3]) const
 	{
