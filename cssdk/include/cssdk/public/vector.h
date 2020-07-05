@@ -14,6 +14,15 @@
 #include <limits>
 
 /// <summary>
+/// <para>Converts radians to degrees.<br/></para>
+/// </summary>
+inline vec_t radians_to_degrees(const double radians)
+{
+	constexpr auto degrees_per_radian = 57.29577951308232;
+	return static_cast<vec_t>(radians * degrees_per_radian);
+}
+
+/// <summary>
 /// <para>Used for many path finding and many other operations that are treated as planar rather than 3D.</para>
 /// </summary>
 class Vector2D {
@@ -586,6 +595,15 @@ public:
 	[[nodiscard]] Vector negate() const
 	{
 		return Vector(-x, -y, -z);
+	}
+
+	/// <summary>
+	/// <para>Computes the angle between two vectors.<br/></para>
+	/// </summary>
+	/// <returns>The angle between two vectors in degrees.<br/></returns>
+	[[nodiscard]] vec_t angle(const Vector& other) const
+	{
+		return radians_to_degrees(std::cos(dot_product(other)));
 	}
 
 	/// <summary>
