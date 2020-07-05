@@ -607,6 +607,21 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Reflects a vector about a normal.<br/></para>
+	/// </summary>
+	/// <returns>Reflected vector.<br/></returns>
+	[[nodiscard]] Vector reflect(const Vector& normal) const
+	{
+		const auto tmp1 = normalize();
+
+		auto tmp2 = normal * 2.0F;
+		tmp2 *= tmp1.dot_product(normal);
+		tmp2 *= length();
+
+		return tmp1 - tmp2;
+	}
+
+	/// <summary>
 	/// </summary>
 	void copy_to_array(vec_t vec_3d[3]) const
 	{
