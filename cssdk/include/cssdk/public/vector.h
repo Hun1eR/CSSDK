@@ -564,6 +564,14 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Computes the cross product of two vectors.<br/></para>
+	/// </summary>
+	[[nodiscard]] Vector cross(const Vector& other) const
+	{
+		return Vector(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+	}
+
+	/// <summary>
 	/// </summary>
 	void copy_to_array(vec_t vec_3d[3]) const
 	{
