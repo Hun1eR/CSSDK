@@ -950,6 +950,15 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Checks if a point is on a plane.<br/></para>
+	/// </summary>
+	/// <returns>True if the point is on the plane, false otherwise.<br/></returns>
+	[[nodiscard]] bool point_on_plane(const Vector& point) const
+	{
+		return std::fabs(plane_distance(point)) < epsilon_;
+	}
+
+	/// <summary>
 	/// </summary>
 	[[nodiscard]] bool is_zero(const vec_t tolerance = epsilon_) const
 	{
