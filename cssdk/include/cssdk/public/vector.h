@@ -656,3 +656,271 @@ public:
 	/// </summary>
 	vec_t z;
 };
+
+/// <summary>
+/// Class Vector4D
+/// </summary>
+class Vector4D {
+	/// <summary>
+	/// </summary>
+	static constexpr float epsilon_ = std::numeric_limits<float>::epsilon();
+
+public:
+	/// <summary>
+	/// </summary>
+	Vector4D() : x(0.0F), y(0.0F), z(0.0F), w(0.0F) {}
+
+	/// <summary>
+	/// </summary>
+	Vector4D(const vec_t x_axis, const vec_t y_axis, const vec_t z_axis, const vec_t w_axis)
+		: x(x_axis), y(y_axis), z(z_axis), w(w_axis) {}
+
+	/// <summary>
+	/// </summary>
+	explicit Vector4D(const vec_t scalar) : x(scalar), y(scalar), z(scalar), w(scalar) {}
+
+	/// <summary>
+	/// </summary>
+	explicit Vector4D(const Vector& vector) : x(vector.x), y(vector.y), z(vector.z), w(0.0F) {}
+
+	/// <summary>
+	/// </summary>
+	explicit Vector4D(const vec_t vec_4d[4]) : x(vec_4d[0]), y(vec_4d[1]), z(vec_4d[2]), w(vec_4d[3]) {}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator=(const vec_t rhs)
+	{
+		x = y = z = w = rhs;
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	bool operator==(const vec_t rhs) const
+	{
+		return std::fabs(x - rhs) < epsilon_ && std::fabs(y - rhs) < epsilon_
+			&& std::fabs(z - rhs) < epsilon_ && std::fabs(w - rhs) < epsilon_;
+	}
+
+	/// <summary>
+	/// </summary>
+	bool operator!=(const vec_t rhs) const
+	{
+		return !operator==(rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	bool operator==(const Vector4D& rhs) const
+	{
+		return std::fabs(x - rhs.x) < epsilon_ && std::fabs(y - rhs.y) < epsilon_
+			&& std::fabs(z - rhs.z) < epsilon_ && std::fabs(w - rhs.w) < epsilon_;
+	}
+
+	/// <summary>
+	/// </summary>
+	bool operator!=(const Vector4D& rhs) const
+	{
+		return !(*this == rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator+(const vec_t rhs) const
+	{
+		return Vector4D(x + rhs, y + rhs, z + rhs, w + rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator-(const vec_t rhs) const
+	{
+		return Vector4D(x - rhs, y - rhs, z - rhs, w - rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator*(const vec_t rhs) const
+	{
+		return Vector4D(x * rhs, y * rhs, z * rhs, w * rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator/(const vec_t rhs) const
+	{
+		return Vector4D(x / rhs, y / rhs, z / rhs, w / rhs);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator+(const Vector4D& rhs) const
+	{
+		return Vector4D(x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator-(const Vector4D& rhs) const
+	{
+		return Vector4D(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator*(const Vector4D& rhs) const
+	{
+		return Vector4D(x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D operator/(const Vector4D& rhs) const
+	{
+		return Vector4D(x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w);
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator+=(const vec_t rhs)
+	{
+		x += rhs;
+		y += rhs;
+		z += rhs;
+		w += rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator-=(const vec_t rhs)
+	{
+		x -= rhs;
+		y -= rhs;
+		z -= rhs;
+		w -= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator*=(const vec_t rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+		w *= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator/=(const vec_t rhs)
+	{
+		x /= rhs;
+		y /= rhs;
+		z /= rhs;
+		w /= rhs;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator+=(const Vector4D& rhs)
+	{
+		x += rhs.x;
+		y += rhs.y;
+		z += rhs.z;
+		w += rhs.w;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator-=(const Vector4D& rhs)
+	{
+		x -= rhs.x;
+		y -= rhs.y;
+		z -= rhs.z;
+		w -= rhs.w;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator*=(const Vector4D& rhs)
+	{
+		x *= rhs.x;
+		y *= rhs.y;
+		z *= rhs.z;
+		w *= rhs.w;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// </summary>
+	Vector4D& operator/=(const Vector4D& rhs)
+	{
+		x /= rhs.x;
+		y /= rhs.y;
+		z /= rhs.z;
+		w /= rhs.w;
+
+		return *this;
+	}
+
+	/// <summary>
+	/// <para>Vectors will now automatically convert to vec_t* when needed.</para>
+	/// </summary>
+	explicit operator vec_t*()
+	{
+		return &x;
+	}
+
+	/// <summary>
+	/// <para>Vectors will now automatically convert to vec_t* when needed.</para>
+	/// </summary>
+	explicit operator const vec_t*() const
+	{
+		return &x;
+	}
+
+	/// <summary>
+	/// </summary>
+	[[nodiscard]] bool is_zero(const vec_t tolerance = epsilon_) const
+	{
+		return x > -tolerance && x < tolerance && y > -tolerance && y < tolerance &&
+			z > -tolerance && z < tolerance && w > -tolerance && w < tolerance;
+	}
+
+	/// <summary>
+	/// </summary>
+	void clear()
+	{
+		x = y = z = w = 0.0F;
+	}
+
+	/// <summary>
+	/// </summary>
+	vec_t x;
+
+	/// <summary>
+	/// </summary>
+	vec_t y;
+
+	/// <summary>
+	/// </summary>
+	vec_t z;
+
+	/// <summary>
+	/// </summary>
+	vec_t w;
+};
