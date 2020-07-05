@@ -959,6 +959,15 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Projects a point on the plane.<br/></para>
+	/// </summary>
+	/// <returns>The projected point.<br/></returns>
+	[[nodiscard]] Vector proj_point_on_plane(const Vector& point) const
+	{
+		return point - make_3d() * plane_distance(point);
+	}
+
+	/// <summary>
 	/// </summary>
 	[[nodiscard]] bool is_zero(const vec_t tolerance = epsilon_) const
 	{
