@@ -925,6 +925,31 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Checks whether a plane intersects with the ray starting at <c>ray_start</c> and going to <c>ray_dir</c> direction.<br/>
+	/// If it does intersect, outputs the intersection point in <c>intersection</c>.<br/></para>
+	/// </summary>
+	/// <returns>True if they intersect, false otherwise.<br/></returns>
+	bool plane_ray_intersect(const Vector& ray_start, const Vector& ray_dir, Vector& intersection) const
+	{
+		const auto a = make_3d().dot_product(ray_dir);
+
+		if (a == 0.0F) {
+			return false; // Ray is parallel to plane.
+		}
+
+		const auto distance1 = plane_distance(ray_start + ray_dir);
+		const auto distance2 = plane_distance(ray_start);
+
+		if (std::fabs(distance1) > std::fabs(distance2) && std::signbit(distance1) == std::signbit(distance2)) {
+			return false;
+		}
+
+		intersection = ray_start - ray_dir * (distance2 / a);
+
+		return true;
+	}
+
+	/// <summary>
 	/// </summary>
 	[[nodiscard]] bool is_zero(const vec_t tolerance = epsilon_) const
 	{
