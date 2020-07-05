@@ -894,6 +894,13 @@ public:
 	}
 
 	/// <summary>
+	/// </summary>
+	[[nodiscard]] Vector make_3d() const
+	{
+		return Vector(x, y, z);
+	}
+
+	/// <summary>
 	/// <para>Constructs a plane out of 4 points in space.<br/></para>
 	/// </summary>
 	static Vector4D plane_3p(const Vector& point1, const Vector& point2, const Vector& point3)
@@ -906,6 +913,15 @@ public:
 		plane.w = normal_c.negate().dot_product(point1);
 
 		return plane;
+	}
+
+	/// <summary>
+	/// <para>Computes the distance between a plane and a point.<br/></para>
+	/// </summary>
+	/// <returns>The distance between the plane and point.<br/></returns>
+	[[nodiscard]] vec_t plane_distance(const Vector& point) const
+	{
+		return make_3d().dot_product(point) + w;
 	}
 
 	/// <summary>
