@@ -572,6 +572,15 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Computes the dot product of two vectors.<br/></para>
+	/// </summary>
+	/// <returns>The dot product of two vectors.<br/></returns>
+	[[nodiscard]] vec_t dot_product(const Vector& other) const
+	{
+		return x * other.x + y * other.y + z * other.z;
+	}
+
+	/// <summary>
 	/// </summary>
 	void copy_to_array(vec_t vec_3d[3]) const
 	{
