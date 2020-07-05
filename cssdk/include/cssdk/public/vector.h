@@ -546,6 +546,15 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Computes the distance between two vectors (points).<br/></para>
+	/// </summary>
+	/// <returns>The distance between two vectors.<br/></returns>
+	[[nodiscard]] vec_t distance(const Vector& other) const
+	{
+		return std::sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y) + (z - other.z) * (z - other.z));
+	}
+
+	/// <summary>
 	/// </summary>
 	void copy_to_array(vec_t vec_3d[3]) const
 	{
