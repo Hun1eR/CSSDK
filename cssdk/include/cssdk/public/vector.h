@@ -894,6 +894,21 @@ public:
 	}
 
 	/// <summary>
+	/// <para>Constructs a plane out of 4 points in space.<br/></para>
+	/// </summary>
+	static Vector4D plane_3p(const Vector& point1, const Vector& point2, const Vector& point3)
+	{
+		const auto normal_a = (point3 - point1).normalize();
+		const auto normal_b = (point3 - point2).normalize();
+		const auto normal_c = normal_a.cross(normal_b).normalize();
+
+		Vector4D plane(normal_c);
+		plane.w = normal_c.negate().dot_product(point1);
+
+		return plane;
+	}
+
+	/// <summary>
 	/// </summary>
 	[[nodiscard]] bool is_zero(const vec_t tolerance = epsilon_) const
 	{
