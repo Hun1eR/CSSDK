@@ -16,10 +16,10 @@
 /// <summary>
 /// <para>Converts radians to degrees.<br/></para>
 /// </summary>
-inline vec_t radians_to_degrees(const double radians)
+inline vec_t radians_to_degrees(const vec_t radians)
 {
-	constexpr auto degrees_per_radian = 57.29577951308232;
-	return static_cast<vec_t>(radians * degrees_per_radian);
+	constexpr auto degrees_per_radian = 57.29577951308232F;
+	return radians * degrees_per_radian;
 }
 
 /// <summary>
