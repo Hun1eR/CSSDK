@@ -933,7 +933,7 @@ public:
 	{
 		const auto a = make_3d().dot_product(ray_dir);
 
-		if (a == 0.0F) {
+		if (std::fabs(a) < epsilon_) {
 			return false; // Ray is parallel to plane.
 		}
 

@@ -79,7 +79,7 @@ bool sys_unload_module(SysModule*& module_handle)
 	}
 
 #if defined(_WIN32)
-	if (FreeLibrary(HMODULE(module_handle))) {
+	if (FreeLibrary(reinterpret_cast<HMODULE>(module_handle))) {
 		module_handle = nullptr;
 	}
 #else
@@ -152,7 +152,7 @@ CreateInterfaceFn sys_get_factory(SysModule* module_handle)
 	}
 
 #if defined(_WIN32)
-	return reinterpret_cast<CreateInterfaceFn>(GetProcAddress(HMODULE(module_handle), CREATE_INTERFACE_PROC_NAME));
+	return reinterpret_cast<CreateInterfaceFn>(GetProcAddress(reinterpret_cast<HMODULE>(module_handle), CREATE_INTERFACE_PROC_NAME));
 #else
 	return reinterpret_cast<CreateInterfaceFn>(dlsym(module_handle, CREATE_INTERFACE_PROC_NAME));
 #endif
