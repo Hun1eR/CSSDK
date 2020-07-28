@@ -243,6 +243,9 @@
     <ClInclude Include="..\cssdk\include\cssdk\game_shared\voice_manager.h">
       <Filter>cssdk\include\game_shared</Filter>
     </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\dll\func_break.h">
+      <Filter>cssdk\include\dll</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cssdk\src\interface.cpp">
