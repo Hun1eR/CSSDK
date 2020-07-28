@@ -12,6 +12,8 @@
 #include <cssdk/engine/eiface.h>
 #include <cssdk/engine/global_vars.h>
 #include <cssdk/public/os_config.h>
+#include <cstdio>
+#include <utility>
 
 class EntityBase;
 
@@ -140,3 +142,18 @@ EntityBase* find_client_in_pvs(Edict* entity);
 /// <summary>
 /// </summary>
 EntityBase* find_entity_by_vars(EntityVars* vars);
+
+/// <summary>
+/// </summary>
+template <typename... TArgs>
+void cssdk_sys_error(const char* format, TArgs&&... args)
+{
+	char error[4096];
+	std::snprintf(error, sizeof error, format, std::forward<TArgs>(args)...);
+
+	g_engine_funcs.server_print("FATAL ERROR (shutting down): ");
+	g_engine_funcs.server_print(error);
+	g_engine_funcs.server_print("\n");
+
+	throw;
+}
