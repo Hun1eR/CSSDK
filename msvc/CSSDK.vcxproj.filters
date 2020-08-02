@@ -246,6 +246,9 @@
     <ClInclude Include="..\cssdk\include\cssdk\dll\func_break.h">
       <Filter>cssdk\include\dll</Filter>
     </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\cssdk.h">
+      <Filter>cssdk\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cssdk\src\interface.cpp">

@@ -150,6 +150,7 @@
     <ClInclude Include="..\cssdk\include\cssdk\common\trace.h" />
     <ClInclude Include="..\cssdk\include\cssdk\common\user_cmd.h" />
     <ClInclude Include="..\cssdk\include\cssdk\common\weapon_data.h" />
+    <ClInclude Include="..\cssdk\include\cssdk\cssdk.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\activity.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\ammo.h" />
     <ClInclude Include="..\cssdk\include\cssdk\dll\api\cs_entity.h" />
