@@ -13,6 +13,7 @@
 #include <cssdk/engine/global_vars.h>
 #include <cssdk/public/os_config.h>
 #include <cstdio>
+#include <cstdlib>
 #include <utility>
 
 class EntityBase;
@@ -155,5 +156,5 @@ void cssdk_sys_error(const char* format, TArgs&&... args)
 	g_engine_funcs.server_print(error);
 	g_engine_funcs.server_print("\n");
 
-	throw;
+	std::exit(-1);
 }
