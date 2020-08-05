@@ -114,9 +114,9 @@ EXPORT_FUNCTION SysInterfaceBase* create_interface(const char* name, CreateInter
 
 /// <summary>
 /// </summary>
-void* initialize_interface(char const* interface_name, CreateInterfaceFn* factory_list, const int num_factories)
+void* initialize_interface(char const* interface_name, CreateInterfaceFn* factory_list, const std::size_t num_factories)
 {
-	for (auto i = 0; i < num_factories; i++) {
+	for (std::size_t i = 0; i < num_factories; i++) {
 		const auto factory = factory_list[i];
 
 		if (!factory) {
