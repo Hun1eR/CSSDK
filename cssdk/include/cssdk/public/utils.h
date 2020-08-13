@@ -130,19 +130,23 @@ EntityBase* cssdk_find_entity_by_string(Edict* start_entity, const char* field, 
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_class_name(Edict* start_entity, const char* class_name);
+EntityBase* cssdk_find_entity_by_classname(Edict* start_entity, const char* class_name);
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_target_name(Edict* start_entity, const char* target_name);
+EntityBase* cssdk_find_entity_by_target_name(Edict* start_entity, const char* target_name);
 
 /// <summary>
 /// </summary>
-EntityBase* find_client_in_pvs(Edict* entity);
+EntityBase* cssdk_find_client_in_pvs(Edict* entity);
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_vars(EntityVars* vars);
+EntityBase* cssdk_find_entity_by_vars(EntityVars* vars);
+
+/// <summary>
+/// </summary>
+void cssdk_precache_model_sounds(const char* model_path);
 
 /// <summary>
 /// </summary>

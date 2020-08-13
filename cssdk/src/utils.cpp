@@ -9,12 +9,16 @@
 
 #include <cssdk/public/utils.h>
 #include <cssdk/dll/entity_base.h>
+#include <cssdk/engine/studio.h>
 #include <climits>
+#include <cstddef>
+#include <cstdint>
 #include <cstring>
 
 /// <summary>
 /// </summary>
-FORCEINLINE_STATIC void message_begin(const MessageType msg_type, const int msg_id, const vec_t* const origin = nullptr, Edict* const client = nullptr)
+FORCEINLINE_STATIC void message_begin(const MessageType msg_type, const int msg_id, const vec_t* const origin = nullptr,
+                                      Edict* const client = nullptr)
 {
 	g_engine_funcs.message_begin(msg_type, msg_id, origin, client);
 }
@@ -190,21 +194,21 @@ EntityBase* cssdk_find_entity_by_string(Edict* start_entity, const char* field, 
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_class_name(Edict* start_entity, const char* class_name)
+EntityBase* cssdk_find_entity_by_classname(Edict* start_entity, const char* class_name)
 {
 	return cssdk_find_entity_by_string(start_entity, "classname", class_name);
 }
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_target_name(Edict* start_entity, const char* target_name)
+EntityBase* cssdk_find_entity_by_target_name(Edict* start_entity, const char* target_name)
 {
 	return cssdk_find_entity_by_string(start_entity, "targetname", target_name);
 }
 
 /// <summary>
 /// </summary>
-EntityBase* find_client_in_pvs(Edict* entity)
+EntityBase* cssdk_find_client_in_pvs(Edict* entity)
 {
 	entity = g_engine_funcs.find_client_in_pvs(entity);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
@@ -212,8 +216,55 @@ EntityBase* find_client_in_pvs(Edict* entity)
 
 /// <summary>
 /// </summary>
-EntityBase* find_entity_by_vars(EntityVars* vars)
+EntityBase* cssdk_find_entity_by_vars(EntityVars* vars)
 {
 	const auto* entity = g_engine_funcs.find_entity_by_vars(vars);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
+}
+
+/// <summary>
+/// </summary>
+void cssdk_precache_model_sounds(const char* model_path)
+{
+#ifdef _MSC_VER
+	FILE* stream{};
+	if (fopen_s(&stream, model_path, "r") || !stream) {
+		return;
+	}
+#else
+	auto* stream = std::fopen(model_path, "r");
+	if (!stream) {
+		return;
+	}
+#endif
+
+	std::fseek(stream, 0, SEEK_END);
+	const auto file_size = std::ftell(stream);
+
+	std::fseek(stream, 0, SEEK_SET);
+	auto* buffer = new std::byte[file_size];
+	std::fread(buffer, sizeof buffer[0], file_size, stream);
+
+#ifdef _MSC_VER
+	fclose(stream);
+#else
+	std::fclose(stream);
+#endif
+
+	auto* studio_hdr = reinterpret_cast<StudioHdr*>(buffer);
+	const auto studio_hdr_uint = reinterpret_cast<std::uintptr_t>(studio_hdr);
+	auto* studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index);
+
+	for (auto seq = 0; seq < studio_hdr->num_seq; ++seq) {
+		const auto num_events = studio_seq_desc[seq].num_events;
+		auto* studio_event = reinterpret_cast<StudioEvent*>(studio_hdr_uint + studio_seq_desc[seq].event_index);
+
+		for (auto event = 0; event < num_events; ++event) {
+			if (studio_event[event].event == 5004 && studio_event[event].options[0]) {
+				g_engine_funcs.precache_sound(studio_event[event].options);
+			}
+		}
+	}
+
+	delete[] buffer;
 }
