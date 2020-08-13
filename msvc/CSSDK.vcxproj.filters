@@ -249,6 +249,9 @@
     <ClInclude Include="..\cssdk\include\cssdk\cssdk.h">
       <Filter>cssdk\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\engine\studio.h">
+      <Filter>cssdk\include\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cssdk\src\interface.cpp">

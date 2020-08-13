@@ -192,6 +192,7 @@
     <ClInclude Include="..\cssdk\include\cssdk\engine\rehlds_api.h" />
     <ClInclude Include="..\cssdk\include\cssdk\engine\rehlds_interfaces.h" />
     <ClInclude Include="..\cssdk\include\cssdk\engine\server.h" />
+    <ClInclude Include="..\cssdk\include\cssdk\engine\studio.h" />
     <ClInclude Include="..\cssdk\include\cssdk\engine\userid_rehlds.h" />
     <ClInclude Include="..\cssdk\include\cssdk\game_shared\voice_manager.h" />
     <ClInclude Include="..\cssdk\include\cssdk\pm_shared\pm_defs.h" />
