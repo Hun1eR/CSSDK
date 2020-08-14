@@ -53,6 +53,13 @@ FORCEINLINE_STATIC void message_end()
 
 /// <summary>
 /// </summary>
+bool cssdk_is_valid_entity(const EntityBase* const entity)
+{
+	return entity && entity->vars && cssdk_is_valid_entity(entity->vars->containing_entity);
+}
+
+/// <summary>
+/// </summary>
 bool cssdk_is_bot(Edict* client)
 {
 	if (client->vars.flags & FL_FAKE_CLIENT) {

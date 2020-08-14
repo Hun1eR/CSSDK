@@ -98,6 +98,10 @@ FORCEINLINE void cssdk_get_gun_position(const EntityVars& entity_vars, Vector& p
 
 /// <summary>
 /// </summary>
+bool cssdk_is_valid_entity(const EntityBase* entity);
+
+/// <summary>
+/// </summary>
 bool cssdk_is_bot(Edict* client);
 
 /// <summary>
