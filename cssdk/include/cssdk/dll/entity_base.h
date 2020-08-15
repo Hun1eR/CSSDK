@@ -584,6 +584,22 @@ public:
 	{
 		return (vars->flags & FL_DORMANT) == FL_DORMANT;
 	}
+
+	/// <summary>
+	/// </summary>
+	void EXT_FUNC DLLEXPORT sub_use(EntityBase* activator, EntityBase* caller, UseType use_type, float value);
+
+	/// <summary>
+	/// </summary>
+	void EXT_FUNC DLLEXPORT sub_think();
+
+	/// <summary>
+	/// </summary>
+	void EXT_FUNC DLLEXPORT sub_touch(EntityBase* other);
+
+	/// <summary>
+	/// </summary>
+	void EXT_FUNC DLLEXPORT sub_blocked(EntityBase* other);
 };
 
 /// <summary>
@@ -594,7 +610,9 @@ class EntityHandle {
 public:
 	/// <summary>
 	/// </summary>
-	EntityHandle() : edict_(nullptr), serial_number_(0) {}
+	EntityHandle() : edict_(nullptr), serial_number_(0)
+	{
+	}
 
 	/// <summary>
 	/// </summary>

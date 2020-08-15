@@ -10,6 +10,10 @@
 #pragma once
 
 #include <cssdk/common/consts.h>
+#include <cssdk/dll/api/cs_entity.h>
+#include <cssdk/dll/api/cs_player.h>
+#include <cssdk/dll/api/cs_player_item.h>
+#include <cssdk/dll/api/cs_player_weapon.h>
 #include <cssdk/dll/func_break.h>
 #include <cssdk/dll/game_rules.h>
 #include <cssdk/dll/gib.h>

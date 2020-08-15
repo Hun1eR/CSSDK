@@ -250,7 +250,7 @@ void cssdk_precache_model_sounds(const char* model_path)
 
 	std::fseek(stream, 0, SEEK_SET);
 	auto* buffer = new std::byte[file_size];
-	std::fread(buffer, sizeof buffer[0], file_size, stream);
+	const auto readed = std::fread(buffer, sizeof buffer[0], file_size, stream);
 
 #ifdef _MSC_VER
 	fclose(stream);
@@ -258,17 +258,19 @@ void cssdk_precache_model_sounds(const char* model_path)
 	std::fclose(stream);
 #endif
 
-	auto* studio_hdr = reinterpret_cast<StudioHdr*>(buffer);
-	const auto studio_hdr_uint = reinterpret_cast<std::uintptr_t>(studio_hdr);
-	auto* studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index);
+	if (readed) {
+		auto* studio_hdr = reinterpret_cast<StudioHdr*>(buffer);
+		const auto studio_hdr_uint = reinterpret_cast<std::uintptr_t>(studio_hdr);
+		auto* studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index);
 
-	for (auto seq = 0; seq < studio_hdr->num_seq; ++seq) {
-		const auto num_events = studio_seq_desc[seq].num_events;
-		auto* studio_event = reinterpret_cast<StudioEvent*>(studio_hdr_uint + studio_seq_desc[seq].event_index);
+		for (auto seq = 0; seq < studio_hdr->num_seq; ++seq) {
+			const auto num_events = studio_seq_desc[seq].num_events;
+			auto* studio_event = reinterpret_cast<StudioEvent*>(studio_hdr_uint + studio_seq_desc[seq].event_index);
 
-		for (auto event = 0; event < num_events; ++event) {
-			if (studio_event[event].event == 5004 && studio_event[event].options[0]) {
-				g_engine_funcs.precache_sound(studio_event[event].options);
+			for (auto event = 0; event < num_events; ++event) {
+				if (studio_event[event].event == 5004 && studio_event[event].options[0]) {
+					g_engine_funcs.precache_sound(studio_event[event].options);
+				}
 			}
 		}
 	}

@@ -1871,7 +1871,7 @@ public:
 	/// </summary>
 	PlayerBase* vip_queue[MAX_VIP_QUEUES];
 
-	//protected:
+//protected:
 	/// <summary>
 	/// </summary>
 	float intermission_end_time_;
