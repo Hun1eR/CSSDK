@@ -150,6 +150,10 @@ EntityBase* cssdk_find_entity_by_vars(EntityVars* vars);
 
 /// <summary>
 /// </summary>
+float cssdk_water_level(Vector origin, float min_z, float max_z);
+
+/// <summary>
+/// </summary>
 void cssdk_precache_model_sounds(const char* model_path);
 
 /// <summary>

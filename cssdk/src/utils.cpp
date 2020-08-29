@@ -231,6 +231,40 @@ EntityBase* cssdk_find_entity_by_vars(EntityVars* vars)
 
 /// <summary>
 /// </summary>
+float cssdk_water_level(Vector origin, float min_z, float max_z)
+{
+	origin.z = min_z;
+
+	if (g_engine_funcs.point_contents(origin) != CONTENTS_WATER) {
+		return min_z;
+	}
+
+	origin.z = max_z;
+
+	if (g_engine_funcs.point_contents(origin) == CONTENTS_WATER) {
+		return max_z;
+	}
+
+	auto diff = max_z - min_z;
+
+	while (diff > 1.0F) {
+		origin.z = min_z + diff / 2.0F;
+
+		if (g_engine_funcs.point_contents(origin) == CONTENTS_WATER) {
+			min_z = origin.z;
+		}
+		else {
+			max_z = origin.z;
+		}
+
+		diff = max_z - min_z;
+	}
+
+	return origin.z;
+}
+
+/// <summary>
+/// </summary>
 void cssdk_precache_model_sounds(const char* model_path)
 {
 #ifdef _MSC_VER
