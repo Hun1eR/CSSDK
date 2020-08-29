@@ -39,6 +39,13 @@ FORCEINLINE_STATIC void write_byte(const int value)
 
 /// <summary>
 /// </summary>
+FORCEINLINE_STATIC void write_coord(const float value)
+{
+	g_engine_funcs.write_coord(value);
+}
+
+/// <summary>
+/// </summary>
 FORCEINLINE_STATIC void write_string(const char* value)
 {
 	g_engine_funcs.write_string(value);
@@ -261,6 +268,41 @@ float cssdk_water_level(Vector origin, float min_z, float max_z)
 	}
 
 	return origin.z;
+}
+
+/// <summary>
+/// </summary>
+void cssdk_bubble_trail(const int bubble_model, const Vector& start, const Vector& end, int count)
+{
+	auto height = cssdk_water_level(start, start.z, start.z + 256.0F) - start.z;
+
+	if (height < 8.0F) {
+		height = cssdk_water_level(end, end.z, end.z + 256.0F) - end.z;
+
+		if (height < 8.0F) {
+			return;
+		}
+
+		height = height + end.z - start.z;
+	}
+
+	if (count > 255) {
+		count = 255;
+	}
+
+	message_begin(MessageType::Broadcast, static_cast<int>(SvcMessage::TempEntity));
+	write_byte(TE_BUBBLE_TRAIL);
+	write_coord(start.x);
+	write_coord(start.y);
+	write_coord(start.z);
+	write_coord(end.x);
+	write_coord(end.y);
+	write_coord(end.z);
+	write_coord(height);
+	write_short(bubble_model);
+	write_byte(count);
+	write_coord(8.0F);
+	message_end();
 }
 
 /// <summary>

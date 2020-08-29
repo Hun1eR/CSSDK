@@ -154,6 +154,10 @@ float cssdk_water_level(Vector origin, float min_z, float max_z);
 
 /// <summary>
 /// </summary>
+void cssdk_bubble_trail(int bubble_model, const Vector& start, const Vector& end, int count);
+
+/// <summary>
+/// </summary>
 void cssdk_precache_model_sounds(const char* model_path);
 
 /// <summary>
