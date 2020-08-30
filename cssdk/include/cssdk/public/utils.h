@@ -11,7 +11,7 @@
 
 #include <cssdk/engine/eiface.h>
 #include <cssdk/engine/global_vars.h>
-#include <cssdk/public/os_config.h>
+#include <cssdk/public/os_defs.h>
 #include <cstdio>
 #include <cstdlib>
 #include <utility>

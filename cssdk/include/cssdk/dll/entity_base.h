@@ -587,19 +587,19 @@ public:
 
 	/// <summary>
 	/// </summary>
-	void EXT_FUNC DLLEXPORT sub_use(EntityBase* activator, EntityBase* caller, UseType use_type, float value);
+	void FORCE_STACK_ALIGN DLLEXPORT sub_use(EntityBase* activator, EntityBase* caller, UseType use_type, float value);
 
 	/// <summary>
 	/// </summary>
-	void EXT_FUNC DLLEXPORT sub_think();
+	void FORCE_STACK_ALIGN DLLEXPORT sub_think();
 
 	/// <summary>
 	/// </summary>
-	void EXT_FUNC DLLEXPORT sub_touch(EntityBase* other);
+	void FORCE_STACK_ALIGN DLLEXPORT sub_touch(EntityBase* other);
 
 	/// <summary>
 	/// </summary>
-	void EXT_FUNC DLLEXPORT sub_blocked(EntityBase* other);
+	void FORCE_STACK_ALIGN DLLEXPORT sub_blocked(EntityBase* other);
 };
 
 /// <summary>

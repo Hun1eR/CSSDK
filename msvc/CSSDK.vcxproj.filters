@@ -225,9 +225,6 @@
     <ClInclude Include="..\cssdk\include\cssdk\public\interface.h">
       <Filter>cssdk\include\public</Filter>
     </ClInclude>
-    <ClInclude Include="..\cssdk\include\cssdk\public\os_config.h">
-      <Filter>cssdk\include\public</Filter>
-    </ClInclude>
     <ClInclude Include="..\cssdk\include\cssdk\public\strind.h">
       <Filter>cssdk\include\public</Filter>
     </ClInclude>
@@ -251,6 +248,9 @@
     </ClInclude>
     <ClInclude Include="..\cssdk\include\cssdk\engine\studio.h">
       <Filter>cssdk\include\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cssdk\include\cssdk\public\os_defs.h">
+      <Filter>cssdk\include\public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

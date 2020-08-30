@@ -202,7 +202,7 @@
     <ClInclude Include="..\cssdk\include\cssdk\public\arch_types.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\base_types.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\interface.h" />
-    <ClInclude Include="..\cssdk\include\cssdk\public\os_config.h" />
+    <ClInclude Include="..\cssdk\include\cssdk\public\os_defs.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\strind.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\utils.h" />
     <ClInclude Include="..\cssdk\include\cssdk\public\vector.h" />

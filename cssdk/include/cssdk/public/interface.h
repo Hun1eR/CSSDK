@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include <cssdk/public/os_config.h>
+#include <cssdk/public/os_defs.h>
 
 /// <summary>
 /// </summary>
@@ -107,9 +107,9 @@ public:
 	EXPOSE_SINGLE_INTERFACE_GLOBALVAR(className, interfaceName, versionName, __g_##className##_singleton)
 
 #if defined(_WIN32)
-#define EXPORT_FUNCTION __declspec(dllexport) EXT_FUNC  // NOLINT(cppcoreguidelines-macro-usage)
+#define EXPORT_FUNCTION __declspec(dllexport) FORCE_STACK_ALIGN  // NOLINT(cppcoreguidelines-macro-usage)
 #else
-#define EXPORT_FUNCTION __attribute__((visibility("default"))) EXT_FUNC  // NOLINT(cppcoreguidelines-macro-usage)
+#define EXPORT_FUNCTION __attribute__((visibility("default"))) FORCE_STACK_ALIGN  // NOLINT(cppcoreguidelines-macro-usage)
 #endif
 
 /// <summary>
