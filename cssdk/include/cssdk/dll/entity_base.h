@@ -948,6 +948,10 @@ public:
 	{
 		move_done_callback = nullptr;
 	}
+
+	/// <summary>
+	/// </summary>
+	void FORCE_STACK_ALIGN DLLEXPORT sub_move_done();
 };
 
 /// <summary>
