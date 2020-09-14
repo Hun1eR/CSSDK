@@ -15,6 +15,14 @@
 #include <cstdint>
 #include <cstring>
 
+#undef STRNCPY
+
+#ifdef _MSC_VER
+#define STRNCPY strncpy_s  // NOLINT(cppcoreguidelines-macro-usage)
+#else
+#define STRNCPY std::strncpy  // NOLINT(cppcoreguidelines-macro-usage)
+#endif
+
 /// <summary>
 /// </summary>
 FORCEINLINE_STATIC void message_begin(const MessageType msg_type, const int msg_id, const vec_t* const origin = nullptr,
@@ -234,6 +242,28 @@ EntityBase* cssdk_find_entity_by_vars(EntityVars* vars)
 {
 	const auto* entity = g_engine_funcs.find_entity_by_vars(vars);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
+}
+
+/// <summary>
+/// </summary>
+char cssdk_find_texture_type(const char* texture)
+{
+	if (texture[0] == '-' || texture[0] == '+') {
+		texture += 2;
+	}
+
+	if (texture[0] == '{' || texture[0] == '!' || texture[0] == '~' || texture[0] == ' ') {
+		++texture;
+	}
+
+	if (texture[0] == '\0') {
+		return '\0';
+	}
+
+	static char texture_name[13] = {};
+	STRNCPY(texture_name, texture, sizeof texture_name - 1);
+
+	return g_dll_funcs->pm_find_texture_type(texture_name);
 }
 
 /// <summary>

@@ -150,6 +150,10 @@ EntityBase* cssdk_find_entity_by_vars(EntityVars* vars);
 
 /// <summary>
 /// </summary>
+char cssdk_find_texture_type(const char* texture);
+
+/// <summary>
+/// </summary>
 float cssdk_water_level(Vector origin, float min_z, float max_z);
 
 /// <summary>
