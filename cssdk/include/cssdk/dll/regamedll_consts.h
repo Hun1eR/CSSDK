@@ -9,6 +9,8 @@
 
 #pragma once
 
+#include <cssdk/public/base_types.h>
+
 //
 // Dot products for view cone checking.
 //
