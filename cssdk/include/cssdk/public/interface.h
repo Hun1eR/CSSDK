@@ -11,6 +11,8 @@
 
 #include <cssdk/public/os_defs.h>
 
+//-V::122
+
 /// <summary>
 /// </summary>
 constexpr auto CREATE_INTERFACE_PROC_NAME = "CreateInterface";
@@ -137,7 +139,7 @@ CreateInterfaceFn sys_get_factory_this();
 /// <param name="module_name">Filename of the component.</param>
 /// <param name="load_flags">The action to be taken when loading the module.<br/></param>
 /// <returns>Opaque handle to the module (hides system dependency).</returns>
-SysModule* sys_load_module(const char* module_name, unsigned long load_flags = 0);
+SysModule* sys_load_module(const char* module_name, unsigned long load_flags = 0); //-V126
 
 /// <summary>
 /// <para>Unloads a DLL/component from.<br/></para>

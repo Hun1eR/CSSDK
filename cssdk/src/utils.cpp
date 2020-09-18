@@ -90,7 +90,7 @@ bool cssdk_is_bot(Edict* client)
 /// </summary>
 short cssdk_fixed_signed16(const float value, const float scale)
 {
-	auto output = static_cast<int>(value * scale);
+	auto output = static_cast<int>(value * scale); //-V2003
 
 	if (output < SHRT_MIN) {
 		output = SHRT_MIN;
@@ -106,7 +106,7 @@ short cssdk_fixed_signed16(const float value, const float scale)
 /// </summary>
 unsigned short cssdk_fixed_unsigned16(const float value, const float scale)
 {
-	auto output = static_cast<int>(value * scale);
+	auto output = static_cast<int>(value * scale); //-V2003
 
 	if (output < 0) {
 		output = 0;
@@ -162,7 +162,7 @@ void cssdk_hud_message(EntityBase* const entity, const HudTextParams& hud_params
 	else if (std::strlen(message) > 489) {
 		// The maximum net message size is 512. There are only 489 bytes left for the string.
 		char string[489];
-		std::snprintf(string, sizeof string, "%s", message);
+		std::snprintf(string, sizeof string, "%s", message); //-V111
 		write_string(string);
 	}
 	else {
@@ -352,7 +352,7 @@ void cssdk_precache_model_sounds(const char* model_path)
 #endif
 
 	std::fseek(stream, 0, SEEK_END);
-	const auto file_size = std::ftell(stream);
+	const auto file_size = static_cast<std::size_t>(std::ftell(stream));
 
 	std::fseek(stream, 0, SEEK_SET);
 	auto* buffer = new std::byte[file_size];
@@ -367,13 +367,14 @@ void cssdk_precache_model_sounds(const char* model_path)
 	if (readed) {
 		auto* studio_hdr = reinterpret_cast<StudioHdr*>(buffer);
 		const auto studio_hdr_uint = reinterpret_cast<std::uintptr_t>(studio_hdr);
-		auto* studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index);
+		auto* studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index); //-V104
+		const auto num_seq = static_cast<std::size_t>(studio_hdr->num_seq); //-V201
 
-		for (auto seq = 0; seq < studio_hdr->num_seq; ++seq) {
-			const auto num_events = studio_seq_desc[seq].num_events;
-			auto* studio_event = reinterpret_cast<StudioEvent*>(studio_hdr_uint + studio_seq_desc[seq].event_index);
+		for (std::size_t seq = 0; seq < num_seq; ++seq) {
+			const auto num_events = static_cast<std::size_t>(studio_seq_desc[seq].num_events); //-V201
+			auto* studio_event = reinterpret_cast<StudioEvent*>(studio_hdr_uint + studio_seq_desc[seq].event_index); //-V104
 
-			for (auto event = 0; event < num_events; ++event) {
+			for (std::size_t event = 0; event < num_events; ++event) {
 				if (studio_event[event].event == 5004 && studio_event[event].options[0]) {
 					g_engine_funcs.precache_sound(studio_event[event].options);
 				}

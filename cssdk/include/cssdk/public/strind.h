@@ -12,6 +12,8 @@
 #include <cssdk/engine/global_vars.h>
 #include <cstring>
 
+//-V::122
+
 /// <summary>
 /// <para>String index.</para>
 /// </summary>

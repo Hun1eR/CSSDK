@@ -11,6 +11,8 @@
 
 #include <cssdk/public/vector.h>
 
+//-V::112
+
 /// <summary>
 /// </summary>
 constexpr auto MAX_STUDIO_TRIANGLES = 20000;

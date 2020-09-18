@@ -31,7 +31,7 @@ SysInterfaceReg* SysInterfaceReg::interface_regs = nullptr;
 /// <param name="module_name">Filename of the component.</param>
 /// <param name="load_flags">The action to be taken when loading the module.<br/></param>
 /// <returns>Opaque handle to the module (hides system dependency).</returns>
-SysModule* sys_load_module(const char* module_name, [[maybe_unused]] const unsigned long load_flags)
+SysModule* sys_load_module(const char* module_name, [[maybe_unused]] const unsigned long load_flags) //-V126
 {
 	if (module_name == nullptr) {
 		return nullptr;

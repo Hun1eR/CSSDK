@@ -1900,7 +1900,7 @@ public:
 //private:
 	/// <summary>
 	/// </summary>
-	bool has_shield_;
+	bool has_shield_{};
 };
 
 //
@@ -3061,7 +3061,7 @@ public:
 #ifdef REGAMEDLL_API	
 	/// <summary>
 	/// </summary>
-	float base_damage_sil_;
+	float base_damage_sil_{};
 #endif
 };
 

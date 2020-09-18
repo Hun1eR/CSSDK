@@ -18,6 +18,10 @@
 #include <cassert>
 #include <cstddef>
 
+//-V::122
+//-V:EntityBase:730
+//-V:ToggleBase:730
+
 /// <summary>
 /// <para>Maximum number of targets a single multi source entity may be assigned.</para>
 /// </summary>
@@ -606,7 +610,7 @@ public:
 /// <para>Safe way to point to CBaseEntities who may die between frames.</para>
 /// </summary>
 template <typename T = EntityBase>
-class EntityHandle {
+class EntityHandle { //-V690
 public:
 	/// <summary>
 	/// </summary>

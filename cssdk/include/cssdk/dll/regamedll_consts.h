@@ -11,6 +11,8 @@
 
 #include <cssdk/public/base_types.h>
 
+//-V::112
+
 //
 // Dot products for view cone checking.
 //
