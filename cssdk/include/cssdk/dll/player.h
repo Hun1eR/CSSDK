@@ -1063,7 +1063,7 @@ public:
 	/// <summary>
 	/// </summary>
 	template <typename T = PlayerItemBase, typename Functor>
-	[[nodiscard]] T* for_each_item(const InventorySlot slot, const Functor& func) const
+	T* for_each_item(const InventorySlot slot, const Functor& func) const
 	{
 		auto* item = player_items[static_cast<int>(slot)];
 
@@ -1081,7 +1081,7 @@ public:
 	/// <summary>
 	/// </summary>
 	template <typename T = PlayerItemBase, typename Functor>
-	[[nodiscard]] T* for_each_item(const Functor& func) const
+	T* for_each_item(const Functor& func) const
 	{
 		for (auto* item : player_items) {
 			while (item) {
@@ -1099,7 +1099,7 @@ public:
 	/// <summary>
 	/// </summary>
 	template <typename T = PlayerItemBase, typename Functor>
-	[[nodiscard]] T* for_each_item(const char* item_name, const Functor& func) const
+	T* for_each_item(const char* item_name, const Functor& func) const
 	{
 		if (!item_name) {
 			return nullptr;
