@@ -121,7 +121,7 @@ public:
 
 	/// <summary>
 	/// </summary>
-	virtual int get_blood_color() = 0;
+	int blood_color() override = 0;
 
 	/// <summary>
 	/// </summary>
@@ -260,7 +260,7 @@ public:
 	/// <summary>
 	/// <para>Color of blood particles.</para>
 	/// </summary>
-	int blood_color{};
+	int blood_color_value{};
 
 	/// <summary>
 	/// <para>HACK until we can query end of gun.</para>
