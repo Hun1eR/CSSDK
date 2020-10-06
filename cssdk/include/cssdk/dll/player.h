@@ -144,9 +144,15 @@ public:
 	/// </summary>
 	Classify classify() override = 0;
 
+#ifdef _WIN32
 	/// <summary>
 	/// </summary>
 	void trace_attack(EntityVars* attacker, float damage, Vector direction, TraceResult* result, int damage_type) override = 0;
+#else
+	/// <summary>
+	/// </summary>
+	void trace_attack(EntityVars* attacker, float damage, Vector& direction, TraceResult* result, int damage_type) override = 0;
+#endif
 
 	/// <summary>
 	/// </summary>

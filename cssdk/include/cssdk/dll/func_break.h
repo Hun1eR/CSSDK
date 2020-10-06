@@ -130,10 +130,17 @@ public:
 	/// </summary>
 	int object_caps() override = 0;
 
+#ifdef _WIN32
 	/// <summary>
 	/// <para>To spark when hit.</para>
 	/// </summary>
 	void trace_attack(EntityVars* attacker, float damage, Vector direction, TraceResult* result, int damage_type) override = 0;
+#else
+	/// <summary>
+	/// <para>To spark when hit.</para>
+	/// </summary>
+	void trace_attack(EntityVars* attacker, float damage, Vector& direction, TraceResult* result, int damage_type) override = 0;
+#endif
 
 	/// <summary>
 	/// <para>Breakables use an overridden take damage.</para>

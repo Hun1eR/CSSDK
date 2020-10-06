@@ -137,9 +137,21 @@ public:
 	/// </summary>
 	virtual void death_notice(EntityVars* child) = 0;
 
+#ifdef _WIN32
 	/// <summary>
 	/// </summary>
 	virtual void trace_attack(EntityVars* attacker, float damage, Vector direction, TraceResult* result, int damage_type) = 0;
+#else
+	//
+	// Actually in ReGameDLL 'Vector direction' declared by value.
+	// But it seems like compiler on Linux is doing it by reference (for optimization purposes).
+	// This should be fixed in ReGameDLL. There is no reasons for a 'Direction Vector' by value.
+	//
+
+	/// <summary>
+	/// </summary>
+	virtual void trace_attack(EntityVars* attacker, float damage, Vector& direction, TraceResult* result, int damage_type) = 0;
+#endif
 
 	/// <summary>
 	/// </summary>
