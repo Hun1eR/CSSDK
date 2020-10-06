@@ -11,7 +11,9 @@
 
 #include <cssdk/engine/eiface.h>
 #include <cssdk/engine/global_vars.h>
+#include <cssdk/engine/studio.h>
 #include <cssdk/public/os_defs.h>
+#include <cstddef>
 #include <cstdio>
 #include <cstdlib>
 #include <utility>
@@ -159,6 +161,10 @@ float cssdk_water_level(Vector origin, float min_z, float max_z);
 /// <summary>
 /// </summary>
 void cssdk_bubble_trail(int bubble_model, const Vector& start, const Vector& end, int count);
+
+/// <summary>
+/// </summary>
+StudioSeqDesc cssdk_get_studio_seq_desc(const char* model_path, std::size_t seq_index);
 
 /// <summary>
 /// </summary>

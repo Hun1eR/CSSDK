@@ -9,9 +9,7 @@
 
 #include <cssdk/public/utils.h>
 #include <cssdk/dll/entity_base.h>
-#include <cssdk/engine/studio.h>
 #include <climits>
-#include <cstddef>
 #include <cstdint>
 #include <cstring>
 
@@ -66,15 +64,11 @@ FORCEINLINE_STATIC void message_end()
 	g_engine_funcs.message_end();
 }
 
-/// <summary>
-/// </summary>
 bool cssdk_is_valid_entity(const EntityBase* const entity)
 {
 	return entity && entity->vars && cssdk_is_valid_entity(entity->vars->containing_entity);
 }
 
-/// <summary>
-/// </summary>
 bool cssdk_is_bot(Edict* client)
 {
 	if (client->vars.flags & FL_FAKE_CLIENT) {
@@ -86,8 +80,6 @@ bool cssdk_is_bot(Edict* client)
 	return !auth_id || !std::strcmp(auth_id, "BOT");
 }
 
-/// <summary>
-/// </summary>
 short cssdk_fixed_signed16(const float value, const float scale)
 {
 	auto output = static_cast<int>(value * scale); //-V2003
@@ -102,8 +94,6 @@ short cssdk_fixed_signed16(const float value, const float scale)
 	return static_cast<short>(output);
 }
 
-/// <summary>
-/// </summary>
 unsigned short cssdk_fixed_unsigned16(const float value, const float scale)
 {
 	auto output = static_cast<int>(value * scale); //-V2003
@@ -118,8 +108,6 @@ unsigned short cssdk_fixed_unsigned16(const float value, const float scale)
 	return static_cast<unsigned short>(output);
 }
 
-/// <summary>
-/// </summary>
 void cssdk_hud_message(EntityBase* const entity, const HudTextParams& hud_params, const char* message, Edict* const client)
 {
 	constexpr auto svc_temp_entity = static_cast<int>(SvcMessage::TempEntity);
@@ -172,8 +160,6 @@ void cssdk_hud_message(EntityBase* const entity, const HudTextParams& hud_params
 	message_end();
 }
 
-/// <summary>
-/// </summary>
 void cssdk_hud_message(Edict* const client, const HudTextParams& hud_params, const char* message)
 {
 	if (client) {
@@ -185,8 +171,6 @@ void cssdk_hud_message(Edict* const client, const HudTextParams& hud_params, con
 	}
 }
 
-/// <summary>
-/// </summary>
 void cssdk_hud_message(const int client, const HudTextParams& hud_params, const char* message)
 {
 	if (client) {
@@ -198,54 +182,40 @@ void cssdk_hud_message(const int client, const HudTextParams& hud_params, const 
 	}
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_entity_in_sphere(Edict* start_entity, const Vector& center, const float radius)
 {
 	const auto* entity = g_engine_funcs.find_entity_in_sphere(start_entity, center, radius);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_entity_by_string(Edict* start_entity, const char* field, const char* value)
 {
 	const auto* entity = g_engine_funcs.find_entity_by_string(start_entity, field, value);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_entity_by_classname(Edict* start_entity, const char* class_name)
 {
 	return cssdk_find_entity_by_string(start_entity, "classname", class_name);
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_entity_by_target_name(Edict* start_entity, const char* target_name)
 {
 	return cssdk_find_entity_by_string(start_entity, "targetname", target_name);
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_client_in_pvs(Edict* entity)
 {
 	entity = g_engine_funcs.find_client_in_pvs(entity);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
 }
 
-/// <summary>
-/// </summary>
 EntityBase* cssdk_find_entity_by_vars(EntityVars* vars)
 {
 	const auto* entity = g_engine_funcs.find_entity_by_vars(vars);
 	return cssdk_is_valid_entity(entity) ? EntityBase::instance(entity) : nullptr;
 }
 
-/// <summary>
-/// </summary>
 char cssdk_find_texture_type(const char* texture)
 {
 	if (texture[0] == '-' || texture[0] == '+') {
@@ -266,8 +236,6 @@ char cssdk_find_texture_type(const char* texture)
 	return g_dll_funcs->pm_find_texture_type(texture_name);
 }
 
-/// <summary>
-/// </summary>
 float cssdk_water_level(Vector origin, float min_z, float max_z)
 {
 	origin.z = min_z;
@@ -300,8 +268,6 @@ float cssdk_water_level(Vector origin, float min_z, float max_z)
 	return origin.z;
 }
 
-/// <summary>
-/// </summary>
 void cssdk_bubble_trail(const int bubble_model, const Vector& start, const Vector& end, int count)
 {
 	auto height = cssdk_water_level(start, start.z, start.z + 256.0F) - start.z;
@@ -335,8 +301,49 @@ void cssdk_bubble_trail(const int bubble_model, const Vector& start, const Vecto
 	message_end();
 }
 
-/// <summary>
-/// </summary>
+StudioSeqDesc cssdk_get_studio_seq_desc(const char* model_path, const std::size_t seq_index)
+{
+	StudioSeqDesc studio_seq_desc{};
+
+#ifdef _MSC_VER
+	FILE* stream{};
+	if (fopen_s(&stream, model_path, "r") || !stream) {
+		return studio_seq_desc;
+	}
+#else
+	auto* stream = std::fopen(model_path, "r");
+	if (!stream) {
+		return studio_seq_desc;
+	}
+#endif
+
+	std::fseek(stream, 0, SEEK_END);
+	const auto file_size = static_cast<std::size_t>(std::ftell(stream));
+
+	std::fseek(stream, 0, SEEK_SET);
+	auto* buffer = new std::byte[file_size];
+	const auto readed = std::fread(buffer, sizeof buffer[0], file_size, stream);
+
+#ifdef _MSC_VER
+	fclose(stream);
+#else
+	std::fclose(stream);
+#endif
+
+	if (readed) {
+		auto* studio_hdr = reinterpret_cast<StudioHdr*>(buffer);
+
+		//-V:num_seq:201
+		if (static_cast<std::size_t>(studio_hdr->num_seq) > seq_index) {
+			const auto studio_hdr_uint = reinterpret_cast<std::uintptr_t>(studio_hdr);
+			studio_seq_desc = reinterpret_cast<StudioSeqDesc*>(studio_hdr_uint + studio_hdr->seq_index)[seq_index]; //-V104
+		}
+	}
+
+	delete[] buffer;
+	return studio_seq_desc;
+}
+
 void cssdk_precache_model_sounds(const char* model_path)
 {
 #ifdef _MSC_VER
