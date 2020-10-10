@@ -4060,6 +4060,47 @@ enum class FiveSevenAnimSeq {
 };
 
 /// <summary>
+/// Enum FiveSevenShieldAnimSeq
+/// </summary>
+enum class FiveSevenShieldAnimSeq {
+	/// <summary>
+	/// </summary>
+	Idle,
+
+	/// <summary>
+	/// </summary>
+	Shoot1,
+
+	/// <summary>
+	/// </summary>
+	Shoot2,
+
+	/// <summary>
+	/// </summary>
+	ShootEmpty,
+
+	/// <summary>
+	/// </summary>
+	Reload,
+
+	/// <summary>
+	/// </summary>
+	Draw,
+
+	/// <summary>
+	/// </summary>
+	ShieldIdle,
+
+	/// <summary>
+	/// </summary>
+	ShieldUp,
+
+	/// <summary>
+	/// </summary>
+	ShieldDown
+};
+
+/// <summary>
 /// Class FiveSeven.
 /// </summary>
 class FiveSeven : public PlayerWeaponBase {
